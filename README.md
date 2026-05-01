@@ -32,6 +32,7 @@
 
 ## 🚀 Quick Start
 
+### Local
 ```bash
 # Install
 pip install -r requirements.txt
@@ -41,6 +42,36 @@ python Telegram_Bot/bot_quran_v1.py
 
 # Web Dashboard
 python Web_Dashboard/app.py
+```
+
+### Google Colab (No installation needed)
+
+1. Upload `Notebooks/QuranVideoGenerator_Colab.ipynb` to [colab.research.google.com](https://colab.research.google.com)
+2. Run each cell sequentially
+3. Click the Gradio link to generate videos
+
+**Or use directly from GitHub:**
+```python
+# In Colab, run this to load from GitHub:
+!git clone https://github.com/zaidlh/rep.git
+%cd rep/Notebooks
+```
+
+---
+
+### Colab Notebooks
+
+| Notebook | Description |
+|----------|-------------|
+| `QuranVideoGenerator_Colab.ipynb` | Full video generator with Gradio UI |
+| `QuranBot_Telegram_Colab.ipynb` | Run Telegram bot from Colab |
+| `Deploy_To_Railway.ipynb` | Deployment guide |
+
+**⚠️ Note:** Colab disconnects after ~12 hours (free tier). Use keep-alive script in browser console:
+```javascript
+setInterval(() => {
+  document.querySelector("colab-toolbar-button#connect")?.click();
+}, 60000);
 ```
 
 ---
