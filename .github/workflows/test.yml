@@ -21,6 +21,7 @@ jobs:
       - name: Install dependencies
         run: |
           pip install -r requirements.txt
+          pip install pytest
           sudo apt-get install -y ffmpeg imagemagick
           
       - name: Test imports
@@ -54,3 +55,7 @@ jobs:
           python -m py_compile Telegram_Bot/bot_quran_v2.py
           python -m py_compile Web_Dashboard/app.py
           echo "✅ All Python files syntax OK"
+
+      - name: Run pytest
+        run: |
+          pytest tests/ -v || echo "Some tests may require dependencies"

@@ -10,11 +10,14 @@
 
 - **Multiple Reciters** - 16+ reciters (new and old)
 - **8 Themes** - Golden, Lilac, Green, Purple, White, Sunset, Blue, Pink
-- **Video Qualities** - 720p and 1080p
+- **Video Qualities** - 720p, 1080p, 4K
+- **8 Translation Languages** - English, Urdu, Indonesian, French, Spanish, German, Turkish
 - **Backgrounds** - Pexels API integration
 - **Professional Audio** - Studio-quality sound processing
 - **Telegram Bot** - Interactive bot interface
 - **Web Dashboard** - Gradio web interface
+- **Docker** - Dockerfile and docker-compose
+- **CI/CD** - GitHub Actions testing
 
 ## 📁 Project Structure
 
@@ -39,6 +42,19 @@ python Telegram_Bot/bot_quran_v1.py
 ```bash
 pip install -r requirements.txt
 python Web_Dashboard/app.py
+```
+
+## 🐳 Docker
+
+```bash
+# Build
+docker build -t quran-bot .
+
+# Run
+docker run -e BOT_TOKEN=your_token quran-bot
+
+# Or use docker-compose
+docker-compose up -d
 ```
 
 ## 🎨 Themes
@@ -102,6 +118,9 @@ python-telegram-bot==20.7
 
 ### Render
 Use `render.yaml` for free hosting.
+
+### Docker
+Use `Dockerfile` or `docker-compose.yml`.
 
 ## 📜 License
 

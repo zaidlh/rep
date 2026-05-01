@@ -193,6 +193,29 @@ def get_verse_text(surah: int, ayah: int) -> dict:
     
     return {"arabic": arabic, "english": english}
 
+# Translation languages
+TRANSLATIONS = {
+    "en.sahih": "English (Sahih International)",
+    "en.arabice": "English (Arabic)",
+    "ur.rahmani": "Urdu (Rahmani)",
+    "id.indonesian": "Indonesian (Bahasa)",
+    "fr.le_grand": "French (Le Grand)",
+    "es.translation": "Spanish",
+    "de.buben": "German (Buben)",
+    "tr.ozturk": "Turkish (Oz TURK)",
+}
+
+def get_translated_text(surah: int, ayah: int, lang: str = "en.sahih") -> str:
+    """Get translation in specified language"""
+    try:
+        response = requests.get(
+            f"http://api.alquran.cloud/v1/ayah/{surah}:{ayah}/{lang}",
+            timeout=10
+        ).json()
+        return response.get("data", {}).get("text", "")
+    except:
+        return ""
+
 def get_verse_timing(surah: int, reciter_id: int) -> list:
     """Get verse timing from mp3quran API"""
     try:
@@ -337,7 +360,7 @@ def create_verse_video(
     config.get_logger().setLevel(30)  # Suppress moviepy warnings
     
     # Dimensions
-    dims = {"720p": (720, 1280), "1080p": (1080, 1920)}
+    dims = {"720p": (720, 1280), "1080p": (1080, 1920), "4K": (2160, 3840)}
     width, height = dims.get(quality, (720, 1280))
     
     # Create frame
@@ -454,6 +477,7 @@ def get_quality_keyboard():
     keyboard = [
         [InlineKeyboardButton("720p", callback_data="quality:720p")],
         [InlineKeyboardButton("1080p", callback_data="quality:1080p")],
+        [InlineKeyboardButton("4K", callback_data="quality:4K")],
     ]
     return InlineKeyboardMarkup(keyboard)
 
