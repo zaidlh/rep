@@ -1,0 +1,23 @@
+services:
+  - type: worker
+    name: quran-bot
+    runtime: python
+    buildCommand: apt-get update && apt-get install -y ffmpeg imagemagick && pip install -r requirements.txt
+    startCommand: python Telegram_Bot/bot_quran_v1.py
+    envVars:
+      - key: BOT_TOKEN
+        sync: false
+      - key: PORT
+        value: 7860
+
+  - type: web
+    name: quran-web
+    runtime: python
+    buildCommand: apt-get update && apt-get install -y ffmpeg imagemagick && pip install -r requirements.txt
+    startCommand: python Web_Dashboard/app.py
+    envVars:
+      - key: PORT
+        value: 7860
+    routes:
+      - path: /
+        handler: index

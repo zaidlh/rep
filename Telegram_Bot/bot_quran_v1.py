@@ -68,7 +68,7 @@ STUDIO_FILTER = (
     "loudnorm=I=-16:TP=-1.5:LRA=11"
 )
 
-# Reciters
+# Reciters - New (from mp3quran.net)
 NEW_RECITERS = {
     "احمد النفيس": (259, "https://server16.mp3quran.net/nufais/Rewayat-Hafs-A-n-Assem/"),
     "وديع اليماني": (219, "https://server6.mp3quran.net/wdee3/"),
@@ -76,8 +76,11 @@ NEW_RECITERS = {
     "ادريس ابكر": (12, "https://server6.mp3quran.net/abkr/"),
     "منصور السالمي": (245, "https://server14.mp3quran.net/mansor/"),
     "رعد الكردي": (221, "https://server6.mp3quran.net/kurdi/"),
+    "صلاح ابوالليل": (251, "https://server11.mp3quran.net/salah/"),
+    "محمود الشحات": (227, "https://server17.mp3quran.net/hisha/"),
 }
 
+# Reciters - Old (from everyayah.com)
 OLD_RECITERS = {
     "ابو بكر الشاطري": "Abu_Bakr_Ash-Shaatree_128kbps",
     "ياسر الدسري": "Yasser_Ad-Dussary_128kbps",
@@ -86,6 +89,9 @@ OLD_RECITERS = {
     "سعود الشريم": "Saood_ash-Shuraym_64kbps",
     "مشاري العفاسي": "Alafasy_64kbps",
     "ناصر القطامي": "Nasser_Alqatami_128kbps",
+    "علي Abdul": "Abdul_Basit_128kbps",
+    "علي Hassan": "Hassan_Abdul",  # Not confirmed
+    "Saad Al-Ghamdi": "Saad_Al-Ghamdi_64kbps",
 }
 
 # Themes
@@ -125,6 +131,18 @@ THEMES = {
         "text": (255, 255, 255),
         "translation": (255, 200, 150),
         "banner": (60, 30, 40),
+    },
+    "ازرق": {
+        "bg": (0, 20, 50),
+        "text": (255, 255, 255),
+        "translation": (135, 206, 250),
+        "banner": (0, 50, 100),
+    },
+    "وردي": {
+        "bg": (40, 20, 35),
+        "text": (255, 240, 245),
+        "translation": (255, 182, 193),
+        "banner": (60, 40, 50),
     },
 }
 
@@ -174,6 +192,29 @@ def get_verse_text(surah: int, ayah: int) -> dict:
     english = en_response["data"]["text"]
     
     return {"arabic": arabic, "english": english}
+
+# Translation languages
+TRANSLATIONS = {
+    "en.sahih": "English (Sahih International)",
+    "en.arabice": "English (Arabic)",
+    "ur.rahmani": "Urdu (Rahmani)",
+    "id.indonesian": "Indonesian (Bahasa)",
+    "fr.le_grand": "French (Le Grand)",
+    "es.translation": "Spanish",
+    "de.buben": "German (Buben)",
+    "tr.ozturk": "Turkish (Oz TURK)",
+}
+
+def get_translated_text(surah: int, ayah: int, lang: str = "en.sahih") -> str:
+    """Get translation in specified language"""
+    try:
+        response = requests.get(
+            f"http://api.alquran.cloud/v1/ayah/{surah}:{ayah}/{lang}",
+            timeout=10
+        ).json()
+        return response.get("data", {}).get("text", "")
+    except:
+        return ""
 
 def get_verse_timing(surah: int, reciter_id: int) -> list:
     """Get verse timing from mp3quran API"""
@@ -319,7 +360,7 @@ def create_verse_video(
     config.get_logger().setLevel(30)  # Suppress moviepy warnings
     
     # Dimensions
-    dims = {"720p": (720, 1280), "1080p": (1080, 1920)}
+    dims = {"720p": (720, 1280), "1080p": (1080, 1920), "4K": (2160, 3840)}
     width, height = dims.get(quality, (720, 1280))
     
     # Create frame
@@ -436,6 +477,7 @@ def get_quality_keyboard():
     keyboard = [
         [InlineKeyboardButton("720p", callback_data="quality:720p")],
         [InlineKeyboardButton("1080p", callback_data="quality:1080p")],
+        [InlineKeyboardButton("4K", callback_data="quality:4K")],
     ]
     return InlineKeyboardMarkup(keyboard)
 

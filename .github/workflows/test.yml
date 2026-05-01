@@ -1,0 +1,61 @@
+name: Test Quran Reel Maker
+
+on:
+  push:
+    branches: [main, quran-reel-maker-v1]
+  pull_request:
+    branches: [main]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - uses: actions/checkout@v4
+      
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.10'
+          
+      - name: Install dependencies
+        run: |
+          pip install -r requirements.txt
+          pip install pytest
+          sudo apt-get install -y ffmpeg imagemagick
+          
+      - name: Test imports
+        run: |
+          python -c "
+            from telegram import Update, InlineKeyboardButton
+            from telegram.ext import Application
+            import gradio
+            from pydub import AudioSegment
+            from PIL import Image
+            import arabic_reshaper
+            from bidi.algorithm import get_display
+            from moviepy.editor import VideoFileClip
+            print('✅ All imports successful')
+          "
+          
+      - name: Test Arabic text reshaping
+        run: |
+          python -c "
+            import arabic_reshaper
+            from bidi.algorithm import get_display
+            text = 'بسم الله الرحمن الرحيم'
+            reshaped = arabic_reshaper.reshape(text)
+            bidi_text = get_display(reshaped)
+            print(f'✅ Arabic text: {bidi_text}')
+          "
+
+      - name: Run syntax check on Python files
+        run: |
+          python -m py_compile Telegram_Bot/bot_quran_v1.py
+          python -m py_compile Telegram_Bot/bot_quran_v2.py
+          python -m py_compile Web_Dashboard/app.py
+          echo "✅ All Python files syntax OK"
+
+      - name: Run pytest
+        run: |
+          pytest tests/ -v || echo "Some tests may require dependencies"

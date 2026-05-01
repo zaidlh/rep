@@ -1,0 +1,25 @@
+version: '3.8'
+
+services:
+  bot:
+    build: .
+    command: python Telegram_Bot/bot_quran_v1.py
+    volumes:
+      - ./data:/app/data
+    environment:
+      - BOT_TOKEN=${BOT_TOKEN}
+    restart: unless-stopped
+
+  web:
+    build: .
+    command: python Web_Dashboard/app.py
+    ports:
+      - "7860:7860"
+    volumes:
+      - ./data:/app/data
+    environment:
+      - PORT=7860
+    restart: unless-stopped
+
+volumes:
+  data:
