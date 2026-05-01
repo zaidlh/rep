@@ -1,5 +1,9 @@
 # 🕌 Quran Reel Maker
 
+[![Test](https://github.com/zaidlh/rep/actions/workflows/test.yml/badge.svg)](https://github.com/zaidlh/rep/actions/workflows/test.yml)
+[![Python](https://img.shields.io/badge/Python-3.10+-blue.svg)](https://python.org)
+[![License](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
+
 صانع الفيديوهات القرآنية -.Generate stunning Quran video reels with Arabic text, English translations, and beautiful backgrounds.
 
 ## 🌟 Features
@@ -103,7 +107,15 @@ Use `render.yaml` for free hosting.
 
 MIT License
 
-## 🧪 Local Testing
+## 🧪 Testing on GitHub
+
+### Automatic Tests
+Tests run automatically on every push:
+1. Go to **Actions** tab
+2. Select **Test Quran Reel Maker**
+3. View test results
+
+### Local Testing
 
 ```bash
 # Install test dependencies
