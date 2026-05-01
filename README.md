@@ -25,8 +25,14 @@
 quran-reel-maker/
 ├── Telegram_Bot/          # Bot versions
 ├── Web_Dashboard/         # Gradio app
-├── Notebooks/            # Colab notebooks
+├── Notebooks/            # Google Colab notebooks
+│   ├── QuranVideoGenerator_Colab.ipynb
+│   ├── QuranBot_Telegram_Colab.ipynb
+│   └── Deploy_To_Railway.ipynb
 ├── Assets/              # Fonts and logos
+├── tests/               # Pytest tests
+├── render.yaml          # Render.com deployment
+├── Dockerfile          # Docker build
 └── requirements.txt
 ```
 
