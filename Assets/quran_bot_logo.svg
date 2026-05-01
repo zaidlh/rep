@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512">
+  <!-- Background Circle -->
+  <defs>
+    <linearGradient id="bgGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#1a472a;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#0d2615;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="goldGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#ffd700;stop-opacity:1" />
+      <stop offset="50%" style="stop-color:#daa520;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#b8860b;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  
+  <!-- Main Background -->
+  <circle cx="256" cy="256" r="250" fill="url(#bgGradient)" stroke="#ffd700" stroke-width="4"/>
+  
+  <!-- Decorative Ring -->
+  <circle cx="256" cy="256" r="220" fill="none" stroke="url(#goldGradient)" stroke-width="2" opacity="0.5"/>
+  
+  <!-- Moon (Crescent) -->
+  <path d="M 280 120 
+           A 100 100 0 1 1 280 320
+           A 80 80 0 1 0 280 120"
+        fill="#ffd700"
+        transform="translate(-20, 20)"/>
+  
+  <!-- Quran Book Icon -->
+  <rect x="180" y="280" width="152" height="100" rx="8" fill="#ffd700" opacity="0.9"/>
+  <rect x="185" y="285" width="142" height="90" rx="6" fill="#1a472a"/>
+  
+  <!-- Quran Text Lines -->
+  <line x1="195" y1="305" x2="317" y2="305" stroke="#ffd700" stroke-width="3" stroke-linecap="round"/>
+  <line x1="195" y1="320" x2="280" y2="320" stroke="#ffd700" stroke-width="3" stroke-linecap="round"/>
+  <line x1="195" y1="335" x2="300" y2="335" stroke="#ffd700" stroke-width="3" stroke-linecap="round"/>
+  <line x1="195" y1="350" x2="265" y2="350" stroke="#ffd700" stroke-width="3" stroke-linecap="round"/>
+  
+  <!-- Star Decoration -->
+  <polygon points="256,70 261,85 276,85 263,95 268,110 256,100 244,110 249,95 236,85 251,85" fill="#ffd700"/>
+  
+  <!-- Corner Stars -->
+  <polygon points="100,120 103,128 112,128 105,134 108,142 100,137 92,142 95,134 88,128 97,128" fill="#ffd700" opacity="0.7"/>
+  <polygon points="412,120 415,128 424,128 417,134 420,142 412,137 404,142 407,134 400,128 409,128" fill="#ffd700" opacity="0.7"/>
+  
+  <!-- Bottom Text -->
+  <text x="256" y="420" 
+        font-family="Arial, sans-serif" 
+        font-size="24" 
+        font-weight="bold"
+        fill="#ffd700"
+        text-anchor="middle">QURAN REEL</text>
+</svg>
