@@ -68,7 +68,7 @@ STUDIO_FILTER = (
     "loudnorm=I=-16:TP=-1.5:LRA=11"
 )
 
-# Reciters
+# Reciters - New (from mp3quran.net)
 NEW_RECITERS = {
     "احمد النفيس": (259, "https://server16.mp3quran.net/nufais/Rewayat-Hafs-A-n-Assem/"),
     "وديع اليماني": (219, "https://server6.mp3quran.net/wdee3/"),
@@ -76,8 +76,11 @@ NEW_RECITERS = {
     "ادريس ابكر": (12, "https://server6.mp3quran.net/abkr/"),
     "منصور السالمي": (245, "https://server14.mp3quran.net/mansor/"),
     "رعد الكردي": (221, "https://server6.mp3quran.net/kurdi/"),
+    "صلاح ابوالليل": (251, "https://server11.mp3quran.net/salah/"),
+    "محمود الشحات": (227, "https://server17.mp3quran.net/hisha/"),
 }
 
+# Reciters - Old (from everyayah.com)
 OLD_RECITERS = {
     "ابو بكر الشاطري": "Abu_Bakr_Ash-Shaatree_128kbps",
     "ياسر الدسري": "Yasser_Ad-Dussary_128kbps",
@@ -86,6 +89,9 @@ OLD_RECITERS = {
     "سعود الشريم": "Saood_ash-Shuraym_64kbps",
     "مشاري العفاسي": "Alafasy_64kbps",
     "ناصر القطامي": "Nasser_Alqatami_128kbps",
+    "علي Abdul": "Abdul_Basit_128kbps",
+    "علي Hassan": "Hassan_Abdul",  # Not confirmed
+    "Saad Al-Ghamdi": "Saad_Al-Ghamdi_64kbps",
 }
 
 # Themes
@@ -125,6 +131,18 @@ THEMES = {
         "text": (255, 255, 255),
         "translation": (255, 200, 150),
         "banner": (60, 30, 40),
+    },
+    "ازرق": {
+        "bg": (0, 20, 50),
+        "text": (255, 255, 255),
+        "translation": (135, 206, 250),
+        "banner": (0, 50, 100),
+    },
+    "وردي": {
+        "bg": (40, 20, 35),
+        "text": (255, 240, 245),
+        "translation": (255, 182, 193),
+        "banner": (60, 40, 50),
     },
 }
 
