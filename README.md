@@ -151,35 +151,74 @@ docker-compose up -d
 
 ## 🚀 Deployment
 
-### Railway
-1. Connect GitHub repo
-2. Add `BOT_TOKEN` variable
-3. Deploy
+### 1. HuggingFace Spaces (Recommended - Free)
 
-### Render
-Use `render.yaml` for free hosting.
-
-### Docker
-Use `Dockerfile` or `docker-compose.yml`.
-
-### HuggingFace Spaces
+**Option A: Web UI**
 1. Go to [huggingface.co/spaces](https://huggingface.co/spaces)
-2. Create **New Space** → Select **Gradio**
-3. Link your GitHub repo
-4. Add secrets (`BOT_TOKEN` if needed)
-5. Click **Duplicate** to make it private
+2. Click **Create New Space**
+3. Select **Gradio** as SDK
+4. Choose **Space Hardware**: CPU (free)
+5. Under **Repository**, select GitHub repo (`zaidlh/rep`)
+6. Under **Branch**, select `quran-reel-maker-v1`
+7. Add secrets if needed:
+   - `BOT_TOKEN` = your Telegram bot token
+8. Click **Create Space**
 
-**Or via CLI:**
+**Option B: Clone & Push**
 ```bash
+# Install HF CLI
 pip install huggingface_hub
+
+# Login
 huggingface-cli login
-huggingface-cli space create quran-reel-maker
+
+# Clone your repo
 git clone https://huggingface.co/spaces/yourusername/quran-reel-maker
+
+# Copy Web Dashboard files
 cp -r Web_Dashboard/* quran-reel-maker/
-cd quran-reel-maker && git add . && git commit -m "init" && git push
+cp requirements.txt quran-reel-maker/
+cp huggingface.yaml quran-reel-maker/space.py  # if using Gradio
+
+# Push
+cd quran-reel-maker
+git add .
+git commit -m "initial"
+git push
 ```
 
 **Hardware:** Free CPU available
+
+---
+
+### 2. Railway
+1. Go to [railway.app](https://railway.app)
+2. Connect GitHub → Select repo
+3. Add `BOT_TOKEN` variable
+4. Deploy
+
+---
+
+### 3. Render (Free)
+1. Go to [render.com](https://render.com)
+2. Connect GitHub → Select repo
+3. Use `render.yaml`
+4. Add `BOT_TOKEN`
+5. Deploy
+
+---
+
+### 4. Docker (Any cloud)
+```bash
+# Build
+docker build -t quran-bot .
+
+# Run
+docker run -e BOT_TOKEN=your_token quran-bot
+
+# Or use docker-compose
+docker-compose up -d
+```
 
 ---
 
