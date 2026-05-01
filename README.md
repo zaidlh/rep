@@ -1,9 +1,5 @@
 # 🕌 Quran Reel Maker
 
-[![Test](https://github.com/zaidlh/rep/actions/workflows/test.yml/badge.svg)](https://github.com/zaidlh/rep/actions/workflows/test.yml)
-[![Python](https://img.shields.io/badge/Python-3.10+-blue.svg)](https://python.org)
-[![License](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
-
 صانع الفيديوهات القرآنية -.Generate stunning Quran video reels with Arabic text, English translations, and beautiful backgrounds.
 
 ## 🌟 Features
@@ -107,29 +103,18 @@ Use `render.yaml` for free hosting.
 
 MIT License
 
-## 🧪 Testing on GitHub
+## 🧪 Local Testing
 
-### Automatic Tests
-Tests run automatically on every push:
-1. Go to **Actions** tab
-2. Select **Test Quran Reel Maker**
-3. Click **Run workflow**
-
-### Manual Test
-Comment on any issue/PR:
-```
-/test
-```
-
-### Local Testing
 ```bash
 # Install test dependencies
 pip install -r requirements.txt
 sudo apt-get install -y ffmpeg imagemagick
 
-# Run tests
-python -m pytest tests/
-# Or run manually
+# Run syntax check
+python -m py_compile Telegram_Bot/bot_quran_v1.py
+python -m py_compile Web_Dashboard/app.py
+
+# Test imports
 python -c "from telegram import Update; print('OK')"
 ```
 
