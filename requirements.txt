@@ -1,0 +1,17 @@
+# Requirements for Quran Reel Maker
+# Install: pip install -r requirements.txt
+
+moviepy==1.0.3
+pydub==0.25.1
+requests==2.31.0
+deep-translator==1.11.4
+arabic-reshaper
+python-bidi
+numpy
+Pillow==10.1
+decorator==4.4.2
+proglog==0.1.10
+gradio==4.44.0
+gdown
+python-telegram-bot==20.7
+PyGithub
