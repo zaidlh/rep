@@ -1,10 +1,17 @@
 # 🕌 Quran Reel Maker
 
+<div align="center">
+
 [![Test](https://github.com/zaidlh/rep/actions/workflows/test.yml/badge.svg)](https://github.com/zaidlh/rep/actions/workflows/test.yml)
 [![Python](https://img.shields.io/badge/Python-3.10+-blue.svg)](https://python.org)
 [![License](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
+[![HuggingFace](https://img.shields.io/badge/Deploy-HuggingFace-blue.svg)](https://huggingface.co/spaces)
 
-صانع الفيديوهات القرآنية -.Generate stunning Quran video reels with Arabic text, English translations, and beautiful backgrounds.
+**Quran Reel Maker** - Generate stunning Quran video reels with Arabic text, translations, and beautiful backgrounds.
+
+[📖 Quick Start](#-quick-start) • [📁 Features](#-features) • [🚀 Deploy](#-deployment) • [🤝 Contribute](CONTRIBUTING.md)
+
+</div>
 
 ## 🌟 Features
 
@@ -127,6 +134,33 @@ Use `render.yaml` for free hosting.
 
 ### Docker
 Use `Dockerfile` or `docker-compose.yml`.
+
+### HuggingFace Spaces
+1. Go to [huggingface.co/spaces](https://huggingface.co/spaces)
+2. Create **New Space**
+3. Select **Gradio** or **Docker** SDK
+4. Link your GitHub repo
+5. Add secrets (`BOT_TOKEN` if needed)
+6. Click **Duplicate** to make it private
+
+**Or via CLI:**
+```bash
+# Install huggingface_hub
+pip install huggingface_hub
+
+# Login
+huggingface-cli login
+
+# Create space
+huggingface-cli space create quran-reel-maker
+
+# Push to space
+git clone https://huggingface.co/spaces/yourusername/quran-reel-maker
+cp -r Telegram_Bot/* quran-reel-maker/
+cd quran-reel-maker && git add . && git commit -m "init" && git push
+```
+
+**Hardware:** Free CPU available
 
 ## 📜 License
 
